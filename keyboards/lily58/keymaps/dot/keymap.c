@@ -1,37 +1,40 @@
 #include QMK_KEYBOARD_H
 
 enum combos {
-    SD_LBRC,
-    DF_SH9,
+    WE_LBRC,
+    ER_SH9,
     XC_SGRV,
     CV_GRV,
-    JK_RBRC,
-    KL_SH0,
+    UI_RBRC,
+    IO_SH0,
+    UO_QOT,
     MCOM_BSLSH,
     COMDOT_SBSLSH,
     COMBO_LENGTH,
 };
 
 // Left side
-const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
 // Right side
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM kl_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM uo_combo[] = {KC_U, KC_O, COMBO_END};
 const uint16_t PROGMEM mcom_combo[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM comdot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     // Left side
-    [SD_LBRC] = COMBO(sd_combo, KC_LBRC),
-    [DF_SH9] = COMBO(df_combo, S(KC_9)),
+    [WE_LBRC] = COMBO(we_combo, KC_LBRC),
+    [ER_SH9] = COMBO(er_combo, S(KC_9)),
     [XC_SGRV] = COMBO(xc_combo, S(KC_GRV)),
     [CV_GRV] = COMBO(cv_combo, KC_GRV),
     // Right side
-    [JK_RBRC] = COMBO(jk_combo, S(KC_0)),
-    [KL_SH0] = COMBO(kl_combo, KC_RBRC),
+    [UI_RBRC] = COMBO(ui_combo, S(KC_0)),
+    [IO_SH0] = COMBO(io_combo, KC_RBRC),
+    [UO_QOT] = COMBO(uo_combo, KC_QUOT),
     [MCOM_BSLSH] = COMBO(mcom_combo, KC_BSLS),
     [COMDOT_SBSLSH] = COMBO(comdot_combo, S(KC_BSLS))
 };
@@ -75,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   ^  |   &  |   *  |   _  |   -  |-------.    ,-------|   0  |   4  |   5  |   6  |   .  |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|   ;  |   1  |   2  |   3  |   /  |      |
+ * |      |      |      |      |   =  |   +  |-------|    |-------|   ;  |   1  |   2  |   3  |   /  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |  Gui |Space | /BSpace /       \[HOLD]\  |Shift |  Alt |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -85,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______,    _______,                   _______, _______, _______, _______,  _______, _______,
   _______, S(KC_1), S(KC_2), S(KC_3), S(KC_4),    S(KC_5),                   KC_BSLS, KC_7,    KC_8,    KC_9,     KC_COMM, _______,
   _______, S(KC_6), S(KC_7), S(KC_8), S(KC_MINS), KC_MINS,                   KC_0,    KC_4,    KC_5,    KC_6,     KC_DOT,  _______,
-  _______, _______, _______, _______, _______,    _______, _______, _______, KC_SCLN, KC_1,    KC_2,    KC_3,     KC_SLSH, _______,
+  _______, _______, _______, _______, KC_EQL,    S(KC_EQL), _______, _______, KC_SCLN, KC_1,    KC_2,    KC_3,     KC_SLSH, _______,
                              _______, KC_LGUI,    KC_SPC,  _______, _______, KC_LSFT, KC_LALT, _______
 ),
 
