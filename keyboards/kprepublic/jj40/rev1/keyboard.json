@@ -41,9 +41,9 @@
     "bootloader": "bootloadhid",
     "features": {
         "bootmagic": false,
-        "mousekey": false,
+        "mousekey": true,
         "extrakey": true,
-        "nkro": false,
+        "nkro": true,
         "backlight": true,
         "rgblight": true
     },
@@ -51,7 +51,8 @@
     "layout_aliases": {
         "LAYOUT": "LAYOUT_ortho_4x12_1x2u_c",
         "LAYOUT_planck_mit": "LAYOUT_ortho_4x12_1x2u_c",
-        "LAYOUT_planck_1x2uR": "LAYOUT_ortho_4x12_1x2u_r"
+        "LAYOUT_planck_1x2uR": "LAYOUT_ortho_4x12_1x2u_r",
+        "LAYOUT_planck_2x2u": "LAYOUT_ortho_4x12_2x2u"
     },
     "layouts": {
         "LAYOUT_ortho_4x12": {
