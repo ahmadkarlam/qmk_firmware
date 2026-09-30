@@ -31,7 +31,6 @@ enum layer_names {
     _SYM,
     _NAV,
     _FUN,
-    _GAME,
 };
 
 const uint16_t PROGMEM tab_combo[]  = {KC_W, KC_F, COMBO_END};
@@ -96,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |Gui+Tb|Gui+Sp|Gui+{ |Gui+} | VolUp|                    | Trans| Trans| Trans| Trans|  Del |      |
+ * |      |Gui+Tb|Gui+D |C+S+Tb|Ctl+Tb| VolUp|                    | Trans| Trans| Trans| Trans|  Del |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      | LSft | LAlt | LCtl | LGui | VolDn|-------.    ,-------| Left | Down |  Up  |Right | Bspc |      |
  * |------+------+------+------+------+------|  NO   |    |  NO   |------+------+------+------+------+------|
- * |      | Trans|Gui+$ |Gui+[ |Gui+] | Play |-------|    |-------| Home | PgDn | PgUp |  End | Enter|      |
+ * |      | Trans| PScr |Alt+Lt|Alt+Rt| Play |-------|    |-------| Home | PgDn | PgUp |  End | Enter|      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |  NO  |  NO  | Trans | / Trans/       \Space \  | Trans|  NO  |  NO  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -108,9 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
  [_NAV] = LAYOUT(
   KC_NO,  KC_NO,           KC_NO,           KC_NO,          KC_NO,          KC_NO,                                     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  KC_NO,  LGUI(KC_TAB),    LGUI(KC_SPC),    LGUI(KC_LCBR),  LGUI(KC_RCBR),  KC_VOLU,                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,  KC_NO,
+  KC_NO,  LGUI(KC_TAB),    G(KC_D),         C(S(KC_TAB)),   C(KC_TAB),      KC_VOLU,                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,  KC_NO,
   KC_NO,  KC_LSFT,         KC_LALT,         KC_LCTL,        KC_LGUI,        KC_VOLD,                                   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC, KC_NO,
-  KC_NO,  KC_TRNS,         LGUI(LSFT(KC_4)),LGUI(KC_LBRC),  LGUI(KC_RBRC),  KC_MPLY, KC_NO,                   KC_NO,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_ENT,  KC_NO,
+  KC_NO,  KC_TRNS,         KC_PSCR,         A(KC_LEFT),     A(KC_RGHT),     KC_MPLY, KC_NO,                   KC_NO,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_ENT,  KC_NO,
                                      KC_NO,           KC_NO,           KC_TRNS,       KC_TRNS,               KC_SPC,   KC_TRNS, KC_NO,   KC_NO
 ),
 
@@ -119,18 +118,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,                              KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   KC_NO,  KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,                              KC_F6,      KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_NO,
   KC_NO,  KC_1,   KC_2,   KC_3,   KC_4,   KC_5,                               KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KC_NO,
-  KC_NO,  KC_F11, KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,             KC_NO,   TG(_GAME),  KC_NO,   KC_TRNS, KC_TRNS, KC_F12,  KC_NO,
+  KC_NO,  KC_F11, KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,             KC_NO,   KC_NO,      KC_NO,   KC_TRNS, KC_TRNS, KC_F12,  KC_NO,
                         KC_NO,  KC_NO,  KC_TRNS,          KC_TRNS,            KC_TRNS,    KC_TRNS, KC_NO,   KC_NO
-),
-
-/* GAME (standard QWERTY across the full board, unlike the other Ferris-footprint layers.
- * Lower/Raise thumb keys give access back to NAV/SYM so FUN's TG(_GAME) can toggle this layer off. */
- [_GAME] = LAYOUT(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
-  LCTL_T(KC_ESC), KC_Q, KC_W, KC_E,    KC_R,    KC_T,                                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC,          KC_RBRC,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                            KC_LALT, KC_LGUI, MO(_NAV),        KC_SPC,    KC_ENT,        MO(_SYM), KC_BSPC, KC_RGUI
 ),
 };
 
